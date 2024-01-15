@@ -12,6 +12,7 @@ export default function App() {
       <TextInput
       style={styles.user}
       placeholder="Username..."
+      
       />
       <TextInput
       style={styles.password}

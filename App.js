@@ -1,96 +1,145 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { Text,StyleSheet,View, TextInput, Button, TouchableOpacity} from "react-native";
+// import * as Font from 'expo-font';
 
+import React from "react";
+import {
+  Text,
+  StyleSheet,
+  View,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  ImageBackground,
+  Image
+} from "react-native";
 
 export default function App() {
-  return(
-    <View style={styles.container}>
-      <View style={styles.box}>
-      <Text style={styles.heading}>Welcome</Text>
-      <Text style={styles.two}>Login</Text>
-      <TextInput
-      style={styles.user}
-      placeholder="Username..."
-      
-      />
-      <TextInput
-      style={styles.password}
-      placeholder="Password"
-      />
-      <TouchableOpacity style={styles.sign}>
-        <Text style={styles.light}>Sign in</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
+  return (
+    <ImageBackground style={styles.bg} source={require("./assets/bg2.jpg")}>
+      <View style={styles.container}>
+        <Text style={styles.heading}>LOGIN</Text>
+        <View style={styles.box}>
+          <Text style={styles.head}>Username</Text>
+
+          <View style={styles.change}>
+           
+            <TextInput
+              style={styles.inner}
+              placeholder="Type your Username"
+            ></TextInput>
+             <Image source={require('./assets/user.png')} style={{height:15, width:15, position:'relative', left:'-510%'}}></Image>
+          </View>
+
+          <Text style={styles.head}>Password</Text>
+
+          <View style={styles.change}>
+            <TextInput style={styles.inner} placeholder="Password"></TextInput>
+            <Image source={require('./assets/lock.png')} style={{height:20, width:15, position:'relative', left:'-510%'}}></Image>
+          </View>
+        </View>
+        <View style={styles.forgot}>
+          <Text style={styles.pass}>Forgot password?</Text>
+        </View>
+        <TouchableOpacity style={styles.login}>
+          <Text style={styles.sign}>Login</Text>
+        </TouchableOpacity>
+        <Text style={styles.up}>Or Sign Up using</Text>
+        <View style={styles.footer}>
+         <Image source={require('./assets/search.png')} style={{height:20, width:15}}></Image>
+         <Image source={require('./assets/facebook.png')} style={{height:20, width:15}}></Image>
+         <Image source={require('./assets/twitter.png')} style={{height:20, width:15}}></Image>
+        </View>
       </View>
-     
-    </View>
+    </ImageBackground>
   );
 }
 
+
+
+
 const styles = StyleSheet.create({
-  container:{
+  bg: {
     flex: 1,
-    alignItems: 'center',
-    paddingVertical: 230,
-    backgroundColor: '#BCBBDD'
+    resizeMode: "cover",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  heading:{
-    fontSize:30,
-    paddingTop:10,
-  },
-  box:{
-    flex:1,
-    backgroundColor: '#ffffff',
-    height:200,
-    width: 250,
-   alignItems: 'center',
-   borderRadius:20,
-   shadowColor: '#000',
+  container: {
+    height: 550,
+    backgroundColor: "#ffffff",
+    width: 300,
+    alignItems: "center",
+    borderRadius: 20,
+    shadowColor: "#000",
     shadowOffset: {
-      width: 2,
+      width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowOpacity: 0.5,
+    shadowRadius: 4.84,
     elevation: 5,
+    padding: 20,
+   
+    // fontFamily: 'Segoe UI'
+  },
+  heading: {
+    fontSize: 28,
+    fontWeight: "600",
+    marginTop: 20,
+  },
+  box: {
+    marginTop: 30,
+    alignItems: "flex-start",
+    width: 220,
+  },
+  head: {
+    fontSize: 16,
+    marginVertical: 10,
+    marginHorizontal: 5,
+    fontWeight: "500",
+  },
+  inner: {
+    backgroundColor: "#E3E3EC",
+    color: "#967321",
+    borderRadius: 20,
+    height: 40,
+    width:220,
     padding: 10,
-  },
-  user:{
-    marginTop:30,
-    backgroundColor: '#DEDEE8',
-    color: '#000',
-    width: 180,
-    height: 45,
-    borderRadius:30,
-    paddingLeft:10
-  },
-  password:{
-    backgroundColor: '#DEDEE8',
-    color: '#000',
-    width: 180,
-    height: 45,
-    borderRadius:30,
-    paddingLeft:10,
-    marginTop:20
-  },
-  two:{
-    marginTop:20,
-    fontSize:25
-  },
-  sign:{
-    marginTop:30,
-    backgroundColor:'#120EB1',
-    width:80,
-    alignItems:'center',
-    height:40,
-    borderRadius:10,
+    paddingLeft:50, 
     
   },
-  light:{
-    color:'#ffffff',
-    fontSize:18,
-    marginTop:5,
-    
+  login: {
+    marginTop: 30,
+    backgroundColor: "#0D47A1",
+    width: 220,
+    alignItems: "center",
+    height: 40,
+    justifyContent: "center",
+    borderRadius: 20,
+  },
+  sign: {
+    color: "#fff",
+    fontWeight: "600",
+    fontSize: 17,
+  },
+  forgot: {
+    marginTop: 5,
+    fontSize: 3,
+    marginLeft: 90,
+  },
+  pass: {
+    textDecorationLine: "underline",
+  },
+  up: {
+    marginTop: 40,
+    color: "#B3B3B3",
+  },
+  change: {
+    flexDirection: "row",
+    alignItems: 'center',
+  },
+  footer:{
+    display:'flex',
+    flexDirection:'row'
   }
 });

@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-// import * as Font from 'expo-font';
 
-import React from "react";
+import React, { useEffect } from "react";
+import * as Font from "expo-font";
 import {
   Text,
   StyleSheet,
@@ -10,31 +10,59 @@ import {
   Button,
   TouchableOpacity,
   ImageBackground,
-  Image
+  Image,
 } from "react-native";
 
 export default function App() {
+  useEffect(() => {
+    loadFonts(); // Call the loadFonts function when the component mounts
+  }, []);
+  const loadFonts = async () => {
+    await Font.loadAsync({
+      "Montserrat-Regular": require("./assets/static/Montserrat-Regular.ttf"),
+      "Montserrat-Bold": require("./assets/static/Montserrat-Bold.ttf"),
+    });
+  };
+
   return (
-    <ImageBackground style={styles.bg} source={require("./assets/bg2.jpg")}>
+    <ImageBackground
+      style={styles.bg}
+      source={require("./assets/background-gradient-lights.jpg")}
+    >
       <View style={styles.container}>
         <Text style={styles.heading}>LOGIN</Text>
         <View style={styles.box}>
           <Text style={styles.head}>Username</Text>
 
           <View style={styles.change}>
-           
             <TextInput
               style={styles.inner}
               placeholder="Type your Username"
             ></TextInput>
-             <Image source={require('./assets/user.png')} style={{height:15, width:15, position:'relative', left:'-510%'}}></Image>
+            <Image
+              source={require("./assets/user.png")}
+              style={{
+                height: 15,
+                width: 15,
+                position: "relative",
+                left: "-510%",
+              }}
+            ></Image>
           </View>
 
           <Text style={styles.head}>Password</Text>
 
           <View style={styles.change}>
             <TextInput style={styles.inner} placeholder="Password"></TextInput>
-            <Image source={require('./assets/lock.png')} style={{height:20, width:15, position:'relative', left:'-510%'}}></Image>
+            <Image
+              source={require("./assets/lock.png")}
+              style={{
+                height: 20,
+                width: 15,
+                position: "relative",
+                left: "-510%",
+              }}
+            ></Image>
           </View>
         </View>
         <View style={styles.forgot}>
@@ -45,17 +73,28 @@ export default function App() {
         </TouchableOpacity>
         <Text style={styles.up}>Or Sign Up using</Text>
         <View style={styles.footer}>
-         <Image source={require('./assets/search.png')} style={{height:20, width:15}}></Image>
-         <Image source={require('./assets/facebook.png')} style={{height:20, width:15}}></Image>
-         <Image source={require('./assets/twitter.png')} style={{height:20, width:15}}></Image>
+          <Image
+            source={require("./assets/search.png")}
+            style={{ height: 30, width: 30, marginHorizontal: 20 }}
+          ></Image>
+          <Image
+            source={require("./assets/facebook.png")}
+            style={{ height: 31, width: 31, marginHorizontal: 20 }}
+          ></Image>
+          <Image
+            source={require("./assets/twitter.png")}
+            style={{ height: 32, width: 30, marginHorizontal: 20 }}
+          ></Image>
         </View>
       </View>
     </ImageBackground>
   );
 }
 
-
-
+// const montserratFonts = {
+//   "Montserrat-Regular": require("./assets/static/Montserrat-Regular.ttf"),
+//   "Montserrat-Bold": require("./assets/static/Montserrat-Bold.ttf"),
+// };
 
 const styles = StyleSheet.create({
   bg: {
@@ -79,13 +118,12 @@ const styles = StyleSheet.create({
     shadowRadius: 4.84,
     elevation: 5,
     padding: 20,
-   
-    // fontFamily: 'Segoe UI'
   },
   heading: {
     fontSize: 28,
     fontWeight: "600",
     marginTop: 20,
+    // fontFamily:'Montserrat-Bold'
   },
   box: {
     marginTop: 30,
@@ -103,10 +141,9 @@ const styles = StyleSheet.create({
     color: "#967321",
     borderRadius: 20,
     height: 40,
-    width:220,
+    width: 220,
     padding: 10,
-    paddingLeft:50, 
-    
+    paddingLeft: 50,
   },
   login: {
     marginTop: 30,
@@ -129,6 +166,7 @@ const styles = StyleSheet.create({
   },
   pass: {
     textDecorationLine: "underline",
+    color: "#808080",
   },
   up: {
     marginTop: 40,
@@ -136,10 +174,15 @@ const styles = StyleSheet.create({
   },
   change: {
     flexDirection: "row",
-    alignItems: 'center',
+    alignItems: "center",
   },
-  footer:{
-    display:'flex',
-    flexDirection:'row'
-  }
+  footer: {
+    display: "flex",
+    flexDirection: "row",
+    marginTop: 20,
+    width: 200,
+    height: 40,
+    // borderColor:'#000',
+    // borderWidth:1
+  },
 });

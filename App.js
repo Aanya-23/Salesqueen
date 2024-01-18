@@ -14,15 +14,15 @@ import {
 } from "react-native";
 
 export default function App() {
-  useEffect(() => {
-    loadFonts(); // Call the loadFonts function when the component mounts
-  }, []);
-  const loadFonts = async () => {
-    await Font.loadAsync({
-      "Montserrat-Regular": require("./assets/static/Montserrat-Regular.ttf"),
-      "Montserrat-Bold": require("./assets/static/Montserrat-Bold.ttf"),
-    });
-  };
+  // useEffect(() => {
+  //   loadFonts(); // Call the loadFonts function when the component mounts
+  // }, []);
+  // const loadFonts = async () => {
+  //   await Font.loadAsync({
+  //     "Montserrat-Regular": require("./assets/static/Montserrat-Regular.ttf"),
+  //     "Montserrat-Bold": require("./assets/static/Montserrat-Bold.ttf"),
+  //   });
+  // };
 
   return (
     <ImageBackground
